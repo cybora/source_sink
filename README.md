@@ -4,6 +4,8 @@ First notes about your program:
 
 * It has to produce the right results.
 * It shouldn't take more than about four hours.
+* You can use the programming language of your choice to solve the challenge, 
+  as long you provide instructions on how to execute it, nevertheless using a language related to the position your are applying for, is a good idea.
 * The code doesn't have to be perfect, but you need to be
   able to explain how things could be improved.  
   (e.g., you could note that, "I'm not checking the return value here")
