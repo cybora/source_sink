@@ -1,3 +1,7 @@
+The application was made in microservice architecture as it consists of the main fixture program , gateway and server registry.
+
+The microservices are dockerized and orchestrated via docker-compose
+
 To start the program please run the build-all.sh with the profile argument ( if no arg is given then it gets the default profile )
 
 build-all.sh prod -> for production ready version to be run on the docker environment
