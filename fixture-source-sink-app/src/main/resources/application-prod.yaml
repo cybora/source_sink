@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: fixture-source-sink-app
+server:
+  port: 8080
+eureka:
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      zone: zone1
+  client:
+    prefer-same-zone-eureka: true
+    register-with-eureka: true
+    region: region1
+    service-url:
+      zone1:
+        http://eureka:8761/eureka/
+    availability-zones:
+      region1: zone1
+source:
+  a:
+    uri: http://fixture-source-sink-app:7299/source/a
+  b:
+    uri: http://fixture-source-sink-app:7299/source/b
+sink:
+  a:
+    uri: http://fixture-source-sink-app:7299/sink/a

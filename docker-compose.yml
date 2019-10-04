@@ -1,0 +1,64 @@
+version: '3.5'
+services:
+  eureka:
+    build:
+      context: eureka-discovery-server
+      dockerfile: ./Dockerfile
+    hostname: eureka
+    environment:
+      - SPRING_APPLICATION_NAME=eureka
+      - SPRING_PROFILES_ACTIVE=${env_profile}
+    restart: always
+    ports:
+    - "8761:8761"
+    networks:
+      services-network-01:
+        aliases:
+          - eureka
+
+  fixture-source-sink-app:
+    build:
+      context: fixture-source-sink-app
+      dockerfile: ./Dockerfile
+    restart: always
+    hostname: fixture-source-sink-app
+    environment:
+      - SPRING_APPLICATION_NAME=fixture-source-sink-app
+      - SPRING_PROFILES_ACTIVE=${env_profile}
+    links: 
+    - eureka
+    ports:
+    - "8081:8081"
+    networks:
+      services-network-01:
+        aliases:
+          - fixture-source-sink-app
+    depends_on:
+      - eureka
+
+  application-gateway:
+    build:
+      context: application-gateway
+      dockerfile: ./Dockerfile
+    restart: always
+    hostname: application-gateway
+    environment:
+      - SPRING_APPLICATION_NAME=application-gateway
+      - SPRING_PROFILES_ACTIVE=${env_profile}
+    links: 
+    - eureka
+    - fixture-source-sink-app
+    ports:
+    - "8080:8080"
+    networks:
+      services-network-01:
+        aliases:
+          - application-gateway
+    depends_on:
+      - eureka
+
+
+networks:
+  services-network-01:
+    name: services-network-01
+    driver: bridge

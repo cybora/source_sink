@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: application-gateway
+server:
+  port: 8080
+eureka:
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      zone: zone1
+  client:
+    prefer-same-zone-eureka: true
+    register-with-eureka: true
+    region: region1
+    service-url:
+      zone1:
+        http://localhost:8761/eureka/
+    availability-zones:
+      region1: zone1
+zuul:
+  ignored-services: '*'
+  prefix: /api
+  routes:
+    docker-denemesi-project1:
+      path: /fixtures/**
+      serviceId: fixture-source-sink-app
+  host:
+    connect-timeout-millis: 30000

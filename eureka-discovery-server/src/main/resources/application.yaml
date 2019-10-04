@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: eureka
+server:
+  port: 8761
+eureka:
+  client:
+    serviceUrl:
+      zone1: http://localhost:8761/eureka/
+    registerWithEureka: false
+    fetchRegistry: false
+    region: region1
+    availability-zones:
+      region1: zone1
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+  instance:
+    statusPageUrlPath: /info
+    healthCheckUrlPath: /health
+    hostname: localhost
+    metadata-map:
+      zone: zone1
