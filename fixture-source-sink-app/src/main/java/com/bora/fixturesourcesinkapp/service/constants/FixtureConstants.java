@@ -1,4 +1,4 @@
-package com.bora.fixturesourcesinkapp.service;
+package com.bora.fixturesourcesinkapp.service.constants;
 
 public class FixtureConstants {
 

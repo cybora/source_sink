@@ -1,5 +1,6 @@
-package com.bora.fixturesourcesinkapp.service;
+package com.bora.fixturesourcesinkapp.service.helpers;
 
+import com.bora.fixturesourcesinkapp.service.constants.FixtureConstants;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
